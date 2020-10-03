@@ -34,13 +34,7 @@ class RubricsHelper
      * @var int
      */
     protected $currentCountItems = 0;
-      
-    /**
-     * Учитывать только активные
-     * @var bool
-     */
-    protected $active;
-    
+         
     /**
      * поля таблицы
      * @var string 
