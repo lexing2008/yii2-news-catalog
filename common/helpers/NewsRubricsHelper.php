@@ -10,7 +10,7 @@ use common\models\db\NewsRubrics;
 class NewsRubricsHelper 
 {
     /**
-     * Возвращает новости по ID he,hbrb
+     * Возвращает новости по ID рубрики
      * @param int $rubricId id рубрики
      * @return array массив новостей
      */
