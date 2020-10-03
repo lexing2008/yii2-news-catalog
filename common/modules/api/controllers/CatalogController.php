@@ -4,6 +4,7 @@ namespace common\modules\api\controllers;
 
 use Yii;
 use yii\rest\Controller;
+use yii\web\Response;
 use common\helpers\RubricsHelper;
 use common\helpers\NewsRubricsHelper;
 
@@ -37,7 +38,7 @@ class CatalogController extends Controller
      */
     public function actionGetRubrics(): array
     {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
 
         $rubricId = Yii::$app->request->get('rubric_id');
         
@@ -56,7 +57,7 @@ class CatalogController extends Controller
      */
     public function actionGetNews(): array
     {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
         
         $rubricId = Yii::$app->request->get('rubric_id');
         

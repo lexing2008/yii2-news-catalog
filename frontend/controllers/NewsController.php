@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\base\Controller;
+use yii\web\Response;
 use common\helpers\RubricsHelper;
 use common\helpers\NewsRubricsHelper;
 
@@ -31,25 +32,27 @@ class NewsController extends Controller
     }
     
     /**
-     * Главная страница новостей
+     * Возвращает по Ajax запросу список новостей рубрики
      * @return mixed
      */
     public function actionAjaxGetNews()
     {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        /*if(!Yii::$app->request->isAjax){
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if(!Yii::$app->request->isAjax){
             return ;
-        }*/
+        }
         
         $rubricId       = Yii::$app->request->get('rubricId');
         if(empty($rubricId)){
-            return ['error' => true, 
-                    'message' => 'Empty rubricId value'];
+            return ['error'     => true, 
+                    'message'   => 'Empty rubricId value'];
         }
         
         $newsRubrics    = NewsRubricsHelper::getNewsByRubricId($rubricId);
 
-        $items = ['error' => false, 'data' => $newsRubrics];
+        $items = ['error'   => false, 
+                  'data'    => $newsRubrics];
+
         return $items;
     }
 }
