@@ -26,3 +26,5 @@ http://asfalt7.online/api/v1/catalog/get-rubrics/?rubric_id=0
 http://asfalt7.online/api/v1/catalog/get-rubrics/?rubric_id=10
 
 
+=== Доступ к новостям ===
+http://asfalt7.online/news
