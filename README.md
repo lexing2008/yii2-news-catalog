@@ -1,7 +1,11 @@
 common/helpers - хэлперы
+
 common/models/db - модели таблиц бд
+
 common/modules/api - Api проекта
+
 frontend/controllers - контроллеры проекта
+
 
 Примеры обращения к API:
 Получение новостей:
