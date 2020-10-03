@@ -5,7 +5,7 @@ namespace common\modules\api\controllers;
 use Yii;
 use yii\rest\Controller;
 use common\helpers\RubricsHelper;
-use common\models\db\NewsRubrics;
+use common\helpers\NewsRubricsHelper;
 
 /**
  * Controller for the `Api` module
@@ -30,48 +30,41 @@ class CatalogController extends Controller
         
         return $behaviors;
     }
-    
+
     /**
-     * Включение рекламных кампаний по городам
-     * @return string
+     * Получение рубрик
+     * @return array массив ответа сервера с данными
      */
     public function actionGetRubrics(): array
     {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
         $rubricId = Yii::$app->request->get('rubric_id');
         
         if(empty($rubricId)){
             $rubricId = 0;
         }
         
-        $helper = new RubricsHelper;      
-        $childrens = $helper->getChildrens($rubricId);
+        $childrens = (new RubricsHelper)->getChildrens($rubricId);
         
         return self::getResponseOk($childrens);
     }
 
     /**
-     * Включение рекламных кампаний по городам
-     * @return string
+     * Получение новостей по рубрикам
+     * @return array массив ответа сервера с данными
      */
     public function actionGetNews(): array
     {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        
         $rubricId = Yii::$app->request->get('rubric_id');
         
         if(empty($rubricId)){
             $rubricId = 0;
         }
         
-        $childrens      = (new RubricsHelper)->getChildrens($rubricId);
-        
-        $rubricsIds     = array_column($childrens, 'id');
-        $rubricsIds[]   = $rubricId;
-
-        $newsRubrics = NewsRubrics::find()
-                            ->select('news.*, news_rubrics.rubric_id')
-                            ->innerJoin('news', 'news_rubrics.news_id = news.id')
-                            ->andWhere(['news_rubrics.rubric_id' => $rubricsIds])
-                            ->asArray()
-                            ->all();
+        $newsRubrics = NewsRubricsHelper::getNewsByRubricId($rubricId);
 
         return self::getResponseOk($newsRubrics);
     }

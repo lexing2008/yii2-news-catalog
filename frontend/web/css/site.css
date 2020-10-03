@@ -118,3 +118,22 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+div.offset_level_0{}
+div.offset_level_1{ padding-left: 20px; }
+div.offset_level_2{ padding-left: 40px; }
+div.offset_level_3{ padding-left: 60px; }
+div.offset_level_4{ padding-left: 80px; }
+
+#news_menu{
+    width: 300px;
+    float: left;
+}
+#news_list{
+    width: 600px;
+    float: left;
+}
+#news_list h3{
+    margin-top: 0px;
+}
+div.line{ height: 1px; width: 100%; }
