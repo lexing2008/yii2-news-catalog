@@ -34,31 +34,13 @@ class RubricsHelper
      * @var int
      */
     protected $currentCountItems = 0;
-      
-    /**
-     * Учитывать только активные
-     * @var bool
-     */
-    protected $active;
-    
-    /**
-     * поля таблицы
-     * @var string 
-     */
-    protected $tableFields;
-    
+           
     /**
      * Родительская категория
      * @var type 
      */
     protected $parentId = 0;
-       
-    /**
-     * Поля по умолчанию
-     * @var string 
-     */
-    protected $defaultFields = '`id` , `pid` , `title`, `position`';
-    
+          
     /**
      * Разделитель элементов
      * @var string 
@@ -74,12 +56,6 @@ class RubricsHelper
     public function __construct(bool $autoLoadFromTable = true, string $tableFields = '', int $parentId = 0) 
     {
         $this->parentId     = $parentId;
-
-        if (empty($tableFields)){
-            $this->tableFields = $this->defaultFields;
-        } else {
-            $this->tableFields = $tableFields;
-        }
 
         // подгружаем всю информацию
         if ($autoLoadFromTable){
@@ -142,20 +118,6 @@ class RubricsHelper
         }
     }
     
-    /*
-     * Возвращает данные для dropDownList
-     */
-    public function getDataForDropDownList()
-    {
-        $data = [0 => '..родительская категория'];
-        // просматриваем весь массив
-        foreach ($this->items as $key => $item) {
-            $data[ $item['id'] ] = str_repeat($this->itemSeparator, $item['level']) . $item['title'];
-        }
-        return $data;
-    }
-    
-
     /** 
      * Возвращает массив потомков заданного элемента
      * @param int $parent  идентификатор родителя. Приведен к int.
