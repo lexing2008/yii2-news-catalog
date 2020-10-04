@@ -6,6 +6,7 @@ common/modules/api - Api проекта
 
 frontend/controllers - контроллеры проекта
 
+frontend/web/js/ - javascript
 
 Примеры обращения к API:
 Получение новостей:
