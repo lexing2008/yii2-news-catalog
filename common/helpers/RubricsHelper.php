@@ -40,20 +40,14 @@ class RubricsHelper
      * @var type 
      */
     protected $parentId = 0;
-          
-    /**
-     * Разделитель элементов
-     * @var string 
-     */
-    protected $itemSeparator = '- - ';
+
 
     /**
      * 
      * @param bool $autoLoadFromTable автоматическая загрука из БД при создании объекта
-     * @param string $tableFields извлекаемые поля. Как в SQL: `id`, `name`, `title`
      * @param int $parentId идентификатор родительской категории
      */
-    public function __construct(bool $autoLoadFromTable = true, string $tableFields = '', int $parentId = 0) 
+    public function __construct(bool $autoLoadFromTable = true, int $parentId = 0) 
     {
         $this->parentId     = $parentId;
 
@@ -101,6 +95,9 @@ class RubricsHelper
      */
     private function nextItem(int $pid, int $level = 0) 
     {
+        if(empty($this->category)){
+            return;
+        }
         // просматриваем весь массив
         foreach ($this->category as $key => $val) {
             // элемент пренадлежит родителю
