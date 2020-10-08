@@ -19,15 +19,15 @@ $this->title = 'News';
         <div id="news_menu">
 <?php
 $count = count($rubrics);
-for ($i = 0; $i < $count; ++$i) {
+for ($i = 0; $i < $count; ++$i):
     $it = $rubrics[$i];
 ?>
-        <div class="offset_level_<?=$it['level']?>">
-            <a href="news/rubrics/?id=<?=$it['id']?>"><?=$it['title']?></a>
-            <input type="hidden" value="<?=$it['id']?>">
-        </div>
+            <div class="offset_level_<?=$it['level']?>">
+                <a href="news/rubrics/?id=<?=$it['id']?>"><?=$it['title']?></a>
+                <input type="hidden" value="<?=$it['id']?>">
+            </div>
 <?php
-}
+endfor;
 ?>
         </div>
         <div id="news_list">

@@ -12,6 +12,11 @@ use common\models\db\Rubrics;
 class RubricsHelper 
 {
     /**
+     * ID главного родителя в иерархии
+     */
+    const MAIN_PARENT_ID = 0;
+    
+    /**
      * Категориии  расположенные как в БД
      * @var array 
      */
@@ -36,20 +41,11 @@ class RubricsHelper
     protected $currentCountItems = 0;
          
     /**
-     * Родительская категория
-     * @var type 
-     */
-    protected $parentId = 0;
-
-    /**
-     * 
+     * Конструктор класса
      * @param bool $autoLoadFromTable автоматическая загрука из БД при создании объекта
-     * @param int $parentId идентификатор родительской категории
      */
-    public function __construct(bool $autoLoadFromTable = true, int $parentId = 0) 
+    public function __construct(bool $autoLoadFromTable = true) 
     {
-        $this->parentId     = $parentId;
-
         // подгружаем всю информацию
         if ($autoLoadFromTable){
             $this->loadFromTable();
@@ -61,16 +57,8 @@ class RubricsHelper
      */
     public function loadFromTable() {
         
-        $arrWhere = [];
-
-        if ($this->parentId){
-            $arrWhere['pid'] = $this->parentId;
-        }
-
-        $records = Rubrics::find()->andWhere( $arrWhere )
-                                    ->orderBy('position ASC')
-                                    ->asArray()
-                                    ->all();
+        $records = Rubrics::find()->asArray()
+                                  ->all();
         $rows = count($records);
         unset($this->category);
         unset($this->original);
@@ -83,7 +71,7 @@ class RubricsHelper
         $this->original = $this->category;
         // устанавливаем текущее количество в нуль
         $this->currentCountItems = 0;
-        $this->nextItem( $this->parentId ); // (Родитель) pid = 0; (Уровень вложенности) level = 0; Начинаем отсчет уровня вложенности	
+        $this->nextItem( self::MAIN_PARENT_ID ); // (Родитель) pid = 0; (Уровень вложенности) level = 0; Начинаем отсчет уровня вложенности	
     }
     
     
@@ -121,7 +109,7 @@ class RubricsHelper
      */
     public function getChildrens(int $parent) 
     {
-        if($parent == 0){
+        if($parent == self::MAIN_PARENT_ID){
             return $this->items;
         }
         

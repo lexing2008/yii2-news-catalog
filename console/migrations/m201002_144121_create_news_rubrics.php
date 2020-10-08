@@ -23,8 +23,8 @@ class m201002_144121_create_news_rubrics extends Migration
         $this->addCommentOnTable('news_rubrics', 'Содержит связи новостей и рубрик');
 
         // внешние ключи
-        $this->addForeignKey('fk-news', 'news_rubrics', 'news_id', 'news', 'id');
-        $this->addForeignKey('fk-rubric', 'news_rubrics', 'rubric_id', 'rubrics', 'id');
+        $this->addForeignKey('fk-news', 'news_rubrics', 'news_id', 'news', 'id', 'CASCADE');
+        $this->addForeignKey('fk-rubric', 'news_rubrics', 'rubric_id', 'rubrics', 'id', 'CASCADE');
                 
         $this->createIndex(
             'idx-news_id',
