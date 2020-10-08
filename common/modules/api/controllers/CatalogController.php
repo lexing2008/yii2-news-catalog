@@ -25,7 +25,7 @@ class CatalogController extends Controller
                 'class'     => \yii\filters\VerbFilter::class,
                 'actions'   => [
                     'get-news'    => ['GET'],
-                    'get-rubrics'           => ['GET'],
+                    'get-rubrics' => ['GET'],
                 ],
             ];
         
