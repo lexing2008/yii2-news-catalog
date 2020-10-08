@@ -43,7 +43,7 @@ class CatalogController extends Controller
         $rubricId = Yii::$app->request->get('rubric_id');
         
         if(empty($rubricId)){
-            $rubricId = 0;
+            $rubricId = RubricsHelper::MAIN_PARENT_ID;
         }
         
         $childrens = (new RubricsHelper)->getChildrens($rubricId);
@@ -62,7 +62,7 @@ class CatalogController extends Controller
         $rubricId = Yii::$app->request->get('rubric_id');
         
         if(empty($rubricId)){
-            $rubricId = 0;
+            $rubricId = RubricsHelper::MAIN_PARENT_ID;
         }
         
         $newsRubrics = NewsRubricsHelper::getNewsByRubricId($rubricId);
