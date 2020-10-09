@@ -4,6 +4,8 @@ common/models/db - модели таблиц бд
 
 common/modules/api - Api проекта
 
+console/migrations - миграции
+
 frontend/controllers - контроллеры проекта
 
 frontend/web/js/ - javascript

@@ -15,7 +15,7 @@ class m201002_140527_create_news extends Migration
         // Таблица news
         // Содержит информацию о новостях
         $this->createTable('news', [
-            'id'            => $this->primaryKey()->unsigned()->comment('id новости'),
+            'id'            => $this->primaryKey()->unsigned()->notNull()->comment('id новости'),
             'title'         => $this->string()->notNull()->comment('название новости'),
             'text'          => $this->text()->notNull()->comment('Текст новости'),
         ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
