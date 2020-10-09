@@ -40,11 +40,7 @@ class CatalogController extends Controller
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
 
-        $rubricId = Yii::$app->request->get('rubric_id');
-        
-        if(empty($rubricId)){
-            $rubricId = RubricsHelper::MAIN_PARENT_ID;
-        }
+        $rubricId = Yii::$app->request->get('rubric_id', RubricsHelper::MAIN_PARENT_ID);               
         
         $childrens = (new RubricsHelper)->getChildrens($rubricId);
         
@@ -59,11 +55,7 @@ class CatalogController extends Controller
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
         
-        $rubricId = Yii::$app->request->get('rubric_id');
-        
-        if(empty($rubricId)){
-            $rubricId = RubricsHelper::MAIN_PARENT_ID;
-        }
+        $rubricId = Yii::$app->request->get('rubric_id', RubricsHelper::MAIN_PARENT_ID);
         
         $newsRubrics = NewsRubricsHelper::getNewsByRubricId($rubricId);
 
