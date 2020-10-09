@@ -15,7 +15,7 @@ class m201002_141430_create_rubrics extends Migration
         // Таблица rubrics
         // Содержит информацию о рубриках
         $this->createTable('rubrics', [
-            'id'            => $this->primaryKey()->unsigned()->notNull()->comment('id рубрики'),
+            'id'            => $this->primaryKey()->unsigned()->comment('id рубрики'),
             'title'         => $this->string()->notNull()->comment('название рубрики'),
             'pid'           => $this->integer()->unsigned()->notNull()->defaultValue(0)->comment('id родительской рубрики'),
             'position'      => $this->integer()->unsigned()->notNull()->defaultValue(0)->comment('позиция в рубрике'),

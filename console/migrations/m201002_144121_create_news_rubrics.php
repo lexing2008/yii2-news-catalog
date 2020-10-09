@@ -15,7 +15,7 @@ class m201002_144121_create_news_rubrics extends Migration
         // Таблица news_rubrics
         // Содержит информацию о рубриках новостей
         $this->createTable('news_rubrics', [
-            'id'            => $this->primaryKey()->unsigned()->notNull()->comment('id записи'),
+            'id'            => $this->primaryKey()->unsigned()->comment('id записи'),
             'news_id'       => $this->integer()->unsigned()->notNull()->comment('id новости'),
             'rubric_id'     => $this->integer()->unsigned()->notNull()->comment('id рубрики'),
         ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
