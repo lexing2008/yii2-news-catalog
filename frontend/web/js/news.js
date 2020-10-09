@@ -8,7 +8,7 @@ $(document).ready( function(){
         $.getJSON('/news/ajax-get-news/?rubricId='+rubricId)
             .success( function( response ){
                 if(response.error){
-                    alert(response.error);
+                    alert(response.message);
                 } else {
                     $('#news_list').text('');
                     for (i = 0; i < response.data.length; ++i){

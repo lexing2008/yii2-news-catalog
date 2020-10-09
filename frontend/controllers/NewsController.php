@@ -50,9 +50,7 @@ class NewsController extends Controller
         
         $newsRubrics    = NewsRubricsHelper::getNewsByRubricId($rubricId);
 
-        $items = ['error'   => false, 
-                  'data'    => $newsRubrics];
-
-        return $items;
+        return ['error'   => false, 
+                'data'    => $newsRubrics];
     }
 }
