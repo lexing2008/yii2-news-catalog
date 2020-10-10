@@ -12,19 +12,14 @@ use common\helpers\NewsRubricsHelper;
  * Отвечает за отображение новостей
  */
 class NewsController extends Controller
-{
-    /**
-     * Родительская рубрика
-     */
-    const PARENT_RUBRIC = 0;
-    
+{   
     /**
      * Главная страница новостей
      * @return mixed
      */
     public function actionIndex()
     {
-        $rubrics = (new RubricsHelper)->getChildrens(self::PARENT_RUBRIC);
+        $rubrics = (new RubricsHelper)->getChildrens(RubricsHelper::MAIN_PARENT_ID);
         
         return $this->render('index',
                             ['rubrics' => $rubrics]
