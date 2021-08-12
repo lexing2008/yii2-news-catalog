@@ -9,6 +9,9 @@
 # netbeans project files
 nbproject
 
+# cache files
+cache
+
 # zend studio for eclipse project files
 .buildpath
 .project
