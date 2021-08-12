@@ -72,17 +72,17 @@ abstract class HierarchyHelper
     /**
      * Получение элементов иерархического списка из таблицы
      */
-    abstract function getItemsFromTable(): array;
+    abstract public function getItemsFromTable(): array;
     
     /**
      * Получение элементов иерархического списка из кэша
      */
-    abstract function getItemsFromCache(): array; 
+    abstract public function getItemsFromCache(): array; 
     
     /**
      * Сохранение элементов иерархического списка в кэш
      */
-    abstract function saveItemsToCache();
+    abstract public function saveItemsToCache();
         
     /**
      * Загрузка информации из БД и формирование правильной иерархической структуры
@@ -136,7 +136,7 @@ abstract class HierarchyHelper
      * @param int $parent  идентификатор родителя. Приведен к int.
      * @return array массив потомков
      */
-    public function getChildrens(int $parent) 
+    public function getChildrens(int $parent): array 
     {
         if($parent == self::MAIN_PARENT_ID){
             return $this->items;
