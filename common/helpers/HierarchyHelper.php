@@ -41,6 +41,21 @@ abstract class HierarchyHelper
      * @var int
      */
     protected $currentCountItems = 0;
+    
+    /**
+     * Получение элементов иерархического списка из таблицы
+     */
+    abstract public function getItemsFromTable(): array;
+    
+    /**
+     * Получение элементов иерархического списка из кэша
+     */
+    abstract public function getItemsFromCache(): array; 
+    
+    /**
+     * Сохранение элементов иерархического списка в кэш
+     */
+    abstract public function saveItemsToCache();
          
     /**
      * Конструктор класса
@@ -68,21 +83,6 @@ abstract class HierarchyHelper
         
         return !empty($this->items);
     }
-
-    /**
-     * Получение элементов иерархического списка из таблицы
-     */
-    abstract public function getItemsFromTable(): array;
-    
-    /**
-     * Получение элементов иерархического списка из кэша
-     */
-    abstract public function getItemsFromCache(): array; 
-    
-    /**
-     * Сохранение элементов иерархического списка в кэш
-     */
-    abstract public function saveItemsToCache();
         
     /**
      * Загрузка информации из БД и формирование правильной иерархической структуры
